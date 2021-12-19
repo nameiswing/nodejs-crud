@@ -1,0 +1,74 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project List</title>
+        {{! <link rel="stylesheet" href="../css/project-list.css"> }}
+        <style>
+            @import
+            url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+            @import
+            url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            * { box-sizing: border-box; font-family: "Poppins", sans-serif; }
+            h1, h2, h3, h4, th { font-family: "Outfit", sans-serif; font-weight:
+            600; color: #333; } html, body { height: 100%; } body { margin: 0;
+            display: flex; align-items: center; flex-direction: column; } table
+            { /* border: 1px solid #666; */ max-width: 65rem; /* margin: auto;
+            */ border-radius: .5rem; /* overflow: hidden; */ border-collapse:
+            collapse; } th { background-color: rgb(174, 216, 255); }
+            th:first-child { border-top-left-radius: .5rem; } th:last-child {
+            border-top-right-radius: .5rem; } td { background-color: rgb(242,
+            249, 255); font-size: .875rem; } td, th { border: 1px solid rgb(255,
+            255, 255); padding: .625rem 1rem; } a { text-decoration: none;
+            font-size: .875rem; } a:hover { text-decoration: underline; }
+        </style>
+    </head>
+    <body>
+        <h1>Project List</h1>
+        <a href="/create" 
+            style="
+                display: inline-block; 
+                padding: .375rem .75rem;
+                background-color: #13aeec;
+                border-radius: .25rem;
+                text-decoration: none;
+                color: white;
+                margin: 0 0 1rem 0;
+            "
+        >Add a Project &plus;</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Summary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each project}}
+                    <tr>
+                        <td>{{this.project_id}}</td>
+                        <td>{{this.project_name}}</td>
+                        <td style="color: #4e4e4e">{{this.project_summary}}</td>
+                        <td align="center">
+                            <a
+                                href="/list/update/{{this.project_id}}"
+                                style="color: #1065b4"
+                            >Edit</a>
+                            {{! <span style="user-select: none;">|</span> }}
+                            <a
+                                href="/list/delete/{{this.project_id}}"
+                                style="color: rgb(255, 78, 78)"
+                                onclick="return confirm('Are you sure you want to delete?')"
+                            >
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </body>
+</html>
